@@ -1,0 +1,47 @@
+{%extends 'cake/base.html'%}
+
+{% load static %}
+
+{%block body_block%}
+<main class=" main-content">
+<div class="container d-flex flex-column align-items-center mt-5">
+  <div class="row mt-5">
+
+    <form action="" method="post">
+     <h2 class="text-center">ADD CATEGORY</h2>
+        {%csrf_token%}
+        {{form.as_p}}
+        <input type="submit" class="btn btn-outline-success form-control" value="ADD">
+    </form>
+
+   </div>
+
+   <div>
+    <table class="table">
+        <tr>
+            <td>Name</td>
+            <td>Action</td>
+        </tr>
+        {%for cat in categories%}
+           <tr>
+            <td>{{cat.name}}</td>
+            <td>
+                <a href="{%url 'remove-category' cat.id %}">delete</a>
+            </td>
+    
+           </tr>
+        {%endfor%}
+    
+    </table>
+   </div>
+
+
+
+   
+
+
+</div>
+</main>
+
+{%endblock%}
+

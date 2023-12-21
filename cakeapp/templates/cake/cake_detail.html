@@ -1,0 +1,87 @@
+{%extends 'cake/base.html'%}
+
+{%block body_block%}
+
+
+
+
+<body style="height: 100vh;">
+    
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-4">
+            <div class="card" style="width:100%">
+                <img src="{{cake.image.url}}" class="card-img-top" alt="..." height="200px">
+                <div class="card-body">
+                  <h5 class="card-title">{{cake.name}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{cake.flavour}}</li>
+                  <!-- <li class="list-group-item">{{cake.brand}}</li> -->
+                  <li class="list-group-item">{{cake.Category}}</li>
+                </ul>
+              </div>
+        </div>
+        <div class="col-8 border boredr-dark">
+           <table class="table table-striped">
+            <tr>
+                
+                <td>Price</td>
+                <td>Size</td>
+                <td>shape</td>
+            </tr>
+            {%for cake in cake.cakevarients_set.all%}
+
+                <tr>
+                    <td>{{cake.price}}</td>
+                    <td>{{cake.size}}</td>
+                    <td>{{cake.shape}}</td>
+                    <td>
+                      <a href="{%url 'update-varient' cake.id%}" class="btn btn-outline-info">Edit</a>
+                      <a href="{%url 'remove-varient' cake.id%}" class="btn btn-outline-danger">Delete</a>
+                      <a href="{%url 'offer-add' cake.id%}"class="btn btn-outline-danger">Add offer</a>
+                    </td>
+                </tr>
+
+            {%endfor%}
+
+           </table>
+        </div>
+        <div class="row">
+          {%for v in cake.cakevarients_set.all%}
+              {%for o in v.offers_set.all%}
+                <div class="border p-3">
+    
+                  <div>
+                    size {{o.cakevarient.size}} | shape  {{o.cakevarient.shape}}  | price  {{o.cakevarient.price}}
+                  </div>
+    
+                  <div><span>offer price$ {{o.price}}</span></div>
+                  <div>start_date : {{o.start_date}}</div>
+                  <div>due_date :{{o.due_date}}</div> 
+                <a href="{%url 'remove-offer' o.id%}" class="btn btn-outline-danger">Delete</a>
+    
+                </div>
+              {%endfor%}
+    
+          {%endfor%}
+    
+        </div>
+    
+
+     
+
+
+
+    </div>
+
+
+
+</div>
+
+
+{%endblock%}
+
+

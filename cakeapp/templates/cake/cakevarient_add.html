@@ -1,0 +1,22 @@
+{%extends 'cake/base.html' %}
+
+{%block body_block%}
+
+    <div class="container p-5">
+        <div class="row mt-5">
+            <div class="col-3"></div>
+            <div class="col-6 border border-dark shadow p-5">
+                <form action="" method="post" enctype="multipart/form-data">
+              <h2 class="text-center">ADD CAKE VARIENTS</h2>
+                    {%csrf_token%}
+                    {{form.as_p}}
+                    <input type="submit" class="btn btn-outline-success form-control"  value="register">
+                </form>
+            </div>
+            <div class="col-3"></div>
+        </div>
+        
+    </div>
+
+
+{%endblock%}

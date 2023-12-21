@@ -1,0 +1,29 @@
+
+
+{% extends "cake/base.html" %}
+{% block body_block%}
+<div class="container mt-5">
+<table class="table table-striped ">
+    <tr>
+        <td>user</td>
+        <td>Cake</td>
+        <td>Rating</td>
+        <td>Comment</td>
+        <td>Image</td>
+    </tr>
+    {% for r in review%}
+      
+    <tr>
+        <td>{{r.user}}</td>
+        <td>{{r.cake}}</td>
+        <td>{{r.rating}}</td>
+        <td>{{r.comment}}</td>
+        <td><img src="{{r.cake.image.url}}" alt=""></td>
+        
+            
+    </tr>
+     
+    {%endfor%}
+</table>
+</div>
+{%endblock%}

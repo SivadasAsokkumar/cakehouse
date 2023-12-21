@@ -1,0 +1,35 @@
+{% extends "cake/base.html" %}
+{% block body_block%}
+<div class="container mt-5">
+<table class="table table-striped ">
+    <tr>
+        <td>user</td>
+        <td>Cake</td>
+        <td>status</td>
+        <td>orderd_date</td>
+        <td>price</td>
+        <td>expected_date</td>
+        <td>address</td>
+        <td>image</td>
+        <td>Action</td>
+    </tr>
+    {% for o in orders%}
+      
+    <tr>
+        <td>{{o.user}}</td>
+        <td>{{o.cakevarient}}</td>
+        <td>{{o.status}}</td>
+        <td>{{o.orderd_date}}</td>
+        <td>{{o.cakevarient.price}}</td>
+        <td>{{o.expected_date}}</td>
+        <td>{{o.address}}</td>
+        <td><img src="{{o.cakevarient.cake.image.url}}" alt=""></td>
+        <td> <a href="{% url 'order-change' o.id %}" ><i class="fa-regular fa-pen-to-square"></i></a>
+          
+            
+    </tr>
+     
+    {%endfor%}
+</table>
+</div>
+{%endblock%}
